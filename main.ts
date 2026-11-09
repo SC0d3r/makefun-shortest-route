@@ -456,7 +456,9 @@ function orOpt(
           const c = ids[offset + p]!;
           const posC = pos[c]!;
           if (posC >= start && posC < start + length) continue;
-          const successorC = tour[posC + 1 < n ? posC + 1 : 0]!;
+          const successorC = c === previous
+            ? nextCity
+            : tour[posC + 1 < n ? posC + 1 : 0]!;
 
           const currentCost = distance(xs, ys, c, successorC);
           const forwardCost =
